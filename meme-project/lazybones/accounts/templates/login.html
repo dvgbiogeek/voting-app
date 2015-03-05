@@ -1,0 +1,16 @@
+{% extends 'form_base.html' %}
+
+{% block header_text %}Login{% endblock %}
+
+{% block form_name %}
+<form name="loginForm" 
+      method="post" 
+      action="{% url 'django.contrib.auth.views.login' %}">
+{% endblock %}
+
+{% block button_name %}Login{% endblock %}
+{% block button_id %}id_submit{% endblock %}
+
+{% block text %}
+<p>I'm <a href="/new_account/" id="links">new </a> and want an account!</p>
+{% endblock %}

@@ -1,0 +1,34 @@
+[
+{
+  "model": "chilies.score",
+  "pk": 19,
+  "fields": {
+    "score": 10,
+    "meme_id": 43
+  }
+},
+{
+  "model": "chilies.score",
+  "pk": 20,
+  "fields": {
+    "score": -4,
+    "meme_id": 46
+  }
+},
+{
+  "model": "chilies.score",
+  "pk": 21,
+  "fields": {
+    "score": 6,
+    "meme_id": 44
+  }
+},
+{
+  "model": "chilies.score",
+  "pk": 22,
+  "fields": {
+    "score": -8,
+    "meme_id": 45
+  }
+}
+]

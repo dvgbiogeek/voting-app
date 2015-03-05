@@ -1,0 +1,61 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="/static/libs/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="/static/libs/font-awesome-4.2.0/css/font-awesome.css">
+  <link rel="stylesheet" href="/static/css/app.css">
+  <script src="/static/libs/jquery/dist/jquery.js"></script>
+  <script src="/static/libs/bootstrap/js/bootstrap.js"></script>
+  <title>Vote Shenanigans!</title>
+</head>
+
+<body id="title" class="center-block">
+	<nav class="navbar navbar-static-top">
+    <div class="welcome-container">
+      {% if user.is_authenticated %}
+      <p id="id_greeting" class="pull-left">Logged in as {{user.username}}</p>
+      <p class="pull-right" id="id_logout"><a href="/logout" id="links">Logout</a></p>
+      {% else %}
+      <p class="pull-right" id="id_login"><a href="/login" id="links">Login</a></p>
+      {% endif %}
+    </div>
+  </nav>
+
+  <div ng-app="memeApp">
+    <div class="text-center">
+      <h2>Vote Shenanigans!</h2>
+      <h4><a id="links" href="#/">Face Off</a></h4>
+      <h4><a id="links" href="#/add">Add Content</a></h4>
+      <h4><a id="links" href="#/about">About</a></h4>
+      <br>
+    </div>
+  
+    <div class="page container-fluid" ng-view></div>
+  </div>
+
+  <script src="/static/libs/angular.js"></script>
+  <script src="/static/libs/angular-route.js"></script>
+  <script src="/static/app.js"></script>
+  <script>
+  // There seems to be a bug in Chrome that results in the angular app not properly loading after /login redirect. This reloads the page to reactivate loading of the angular app.
+  function restart() {
+    var baseUrl = "http://127.0.0.1:8000";
+    if (document.referrer === baseUrl + "/login/") {
+      if ( $('#random').length ) {
+        return;
+      }
+      else {
+        console.log('content not there');
+        window.location.href = baseUrl;
+        window.setTimeout(2000);
+      }
+    }  
+    else {
+      return;
+    }
+  }
+
+  restart();
+  </script>
+</body>
+</html>

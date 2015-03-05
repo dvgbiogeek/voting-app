@@ -1,0 +1,27 @@
+<div>
+  <h4>Face Off</h4>
+  <div class="container-fluid">  
+    <div class="row">
+      <div ng-repeat="meme in memes">
+        <div class="col-md-6">
+          <div class="tile-images" id="random">
+            <figure>
+              <img class="image-display" id="id_image" ng-src="{{meme.image_url}}">
+              <br>
+              <figcaption><span ng-bind="meme.title"></span></figcaption>
+            </figure>
+            <div class="vote-button">
+              <input class="btn btn-default"
+                     type="submit" 
+                     value="Vote"
+                     ng-click="vote()">
+            </div>
+            <div ng-hide="voteDisplay" class="score-display">
+              <span ng-bind="meme.score"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

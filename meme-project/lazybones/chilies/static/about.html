@@ -1,0 +1,31 @@
+<div class="container slider">
+	<h4>This guy started it all.</h4>
+	<img ng-repeat="slide in slides" 
+		 class="slide nonDraggableImage" 
+		 ng-hide="!isCurrentSlideIndex($index)"
+		 ng-src="{{slide.image}}">
+
+  <a class="arrow previous" href="#/about" ng-click="nextSlide()">
+    <i class="fa fa-chevron-left fa-3x"></i>
+  </a>
+  <a class="arrow next" href="#/about" ng-click="previousSlide()">
+    <i class="fa fa-chevron-right fa-3x"></i>
+  </a>
+	<nav class="nav">
+		<div class="wrapper">
+      <ul class="dots">
+        <li class="dot" ng-repeat="slide in slides">
+          <a href="#/about" 
+             ng-class="{'active':isCurrentSlideIndex($index)}"
+             ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a>          
+        </li>
+      </ul>
+    </div>
+	</nav>
+
+  <div class="words-container">
+    <p>I have bunnies, and Mr. Bunnyman was the first one. He was sweet, funny, incredibly curious, and always a joy to be around (even when he is systematically destroying the furniture). This site is dedicated to the animals that enter into your life, to those that have moved on and to those coaxing your attention whenever possible.</p><br>
+    <p>These days I am on bunny number 3 and 4, who are charming in their own way. Consequently, I have many pictures and no way to figure out which one is better. So dear friends, I know that you too, have funny moments to share (and vote on).</p>    
+  </div>
+
+</div>

@@ -1,0 +1,56 @@
+[
+{
+    "fields": {
+        "is_active": true,
+        "is_staff": true,
+        "last_login": "2015-02-20T06:04:52.759Z",
+        "is_superuser": true,
+        "email": "dvgbiogeek@gmail.com",
+        "groups": [],
+        "user_permissions": [],
+        "first_name": "",
+        "password": "pbkdf2_sha256$15000$FLNac98vg6AC$ZxYBRUQm6kYh9GbscOZuyLuEbVCTlLGM/X2FrXk5jio=",
+        "date_joined": "2015-01-30T01:59:59.301Z",
+        "last_name": "",
+        "username": "danielleglick"
+    },
+    "model": "auth.user",
+    "pk": 1
+},
+{
+    "fields": {
+        "is_active": true,
+        "is_staff": false,
+        "last_login": "2015-02-12T22:43:18.844Z",
+        "is_superuser": false,
+        "email": "tristan@some.com",
+        "groups": [],
+        "user_permissions": [],
+        "first_name": "",
+        "password": "pbkdf2_sha256$15000$mN9vdzh7sTEo$eKN8rAtaj1Zo4m+eYX9EpCJiq225t7yN+CVxgorBfGI=",
+        "date_joined": "2015-02-12T22:43:18.844Z",
+        "last_name": "",
+        "username": "tristan"
+    },
+    "model": "auth.user",
+    "pk": 4
+},
+{
+    "fields": {
+        "is_active": true,
+        "is_staff": false,
+        "last_login": "2015-02-13T08:40:34.068Z",
+        "is_superuser": false,
+        "email": "sapphire@nudge.me",
+        "groups": [],
+        "user_permissions": [],
+        "first_name": "",
+        "password": "pbkdf2_sha256$15000$kPq7HZTIatYN$a3E00jhlhlO9Zhst6xd0w5UoPrurf31rqUhb4a4f+vE=",
+        "date_joined": "2015-02-13T08:40:13.077Z",
+        "last_name": "",
+        "username": "sapphire"
+    },
+    "model": "auth.user",
+    "pk": 5
+}
+]
