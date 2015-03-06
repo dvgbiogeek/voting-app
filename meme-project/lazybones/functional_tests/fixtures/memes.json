@@ -1,6 +1,5 @@
 [
 {
-    "pk": 42,
     "model": "chilies.meme",
     "fields": {
         "image_url": "https://farm8.staticflickr.com/7566/16075519147_679fc65750_b.jpg",
@@ -10,7 +9,6 @@
     }
 },
 {
-    "pk": 43,
     "model": "chilies.meme",
     "fields": {
         "image_url": "https://farm8.staticflickr.com/7477/15754458406_82668ecc00_b.jpg",
@@ -20,7 +18,6 @@
     }
 },
 {
-    "pk": 44,
     "model": "chilies.meme",
     "fields": {
         "image_url": "https://farm4.staticflickr.com/3887/15388606342_e457816b2f_b.jpg",
@@ -30,7 +27,6 @@
     }
 },
 {
-    "pk": 45,
     "model": "chilies.meme",
     "fields": {
         "image_url": "https://farm8.staticflickr.com/7476/15239908644_99d7bb0aa6_b.jpg",
@@ -40,7 +36,6 @@
     }
 },
 {
-    "pk": 46,
     "model": "chilies.meme",
     "fields": {
         "image_url": "https://farm8.staticflickr.com/7496/15603633928_a7d6b65aeb_b.jpg",

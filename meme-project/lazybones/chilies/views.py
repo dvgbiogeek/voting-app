@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.core.exceptions import ObjectDoesNotExist
+from django.views.decorators.cache import never_cache
 from random import randrange
 import json
 
@@ -8,15 +9,21 @@ from chilies.models import Meme, Score
 from scorer import scorers
 
 
+# @never_cache
 def home(request):
     return render(request, 'home.html')
+
+
+def get_scorer():
+    """Wrapper function for defining scorer."""
+    return scorers.VoteScorer()
 
 
 def meme_display(request):
     """
     Scores the last vote and then displays memes from the db at /chilies/test.
     """
-    scorer = scorers.VoteScorer()
+    scorer = get_scorer()
     try:
         scorers.score_last_vote(scorer)
     except DoesNotExist:
@@ -31,7 +38,7 @@ def get_random_memes():
     """
     num_results = 2
     result = []
-    tried_index = []
+    tried_index = set()
     # first determine the highest pk value of the Memes in the database
     max_pk = Meme.objects.order_by('pk').reverse()[0].pk
     # while less than 2 results are in the list and the number of tried values
@@ -41,7 +48,7 @@ def get_random_memes():
         if rand_pk in tried_index:
             continue
         else:
-            tried_index.append(rand_pk)
+            tried_index.add(rand_pk)
         try:
             new_result = Meme.objects.get(pk=rand_pk)
             result.append(new_result)
@@ -60,6 +67,7 @@ def meme_dict_from_object(result):
         try:
             score = Score.objects.get(meme_id=e).score
         except ObjectDoesNotExist:
+            scorer = get_scorer()
             score = scorer.initial_score
         meme_dict = {
             "id": e.id,
