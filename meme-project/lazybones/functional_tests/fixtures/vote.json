@@ -1,8 +1,8 @@
 [
 {
   "fields": {
-    "winner": 44,
-    "loser": 43,
+    "winner": 2,
+    "loser": 1,
     "date_voted": "2015-02-20T06:33:10.759Z",
     "not_scored": false,
     "user_id": 1
@@ -12,8 +12,8 @@
 },
 {
   "fields": {
-    "winner": 43,
-    "loser": 45,
+    "winner": 1,
+    "loser": 3,
     "date_voted": "2015-02-20T06:33:19.463Z",
     "not_scored": false,
     "user_id": 1
@@ -23,8 +23,8 @@
 },
 {
   "fields": {
-    "winner": 44,
-    "loser": 45,
+    "winner": 2,
+    "loser": 3,
     "date_voted": "2015-02-20T07:26:57.876Z",
     "not_scored": false,
     "user_id": 1
@@ -34,8 +34,8 @@
 },
 {
   "fields": {
-    "winner": 43,
-    "loser": 45,
+    "winner": 1,
+    "loser": 3,
     "date_voted": "2015-02-20T07:37:48.557Z",
     "not_scored": false,
     "user_id": 1
@@ -45,8 +45,8 @@
 },
 {
   "fields": {
-    "winner": 43,
-    "loser": 46,
+    "winner": 1,
+    "loser": 4,
     "date_voted": "2015-02-25T05:40:55.905Z",
     "not_scored": false,
     "user_id": 1
@@ -56,8 +56,8 @@
 },
 {
   "fields": {
-    "winner": 43,
-    "loser": 46,
+    "winner": 1,
+    "loser": 4,
     "date_voted": "2015-02-25T23:23:32.077Z",
     "not_scored": false,
     "user_id": 1

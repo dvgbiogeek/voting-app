@@ -75,10 +75,10 @@ class MemeApiTest(ResourceTestCase):
         """
         resp = self.api_client.get('/api/v1/meme/')
         self.assertEqual(self.deserialize(resp)['objects'][4], {
-            'id': 46,
+            'id': 5,
             'image_url': 'https://farm8.staticflickr.com/7496/15603633928_a7d6b65aeb_b.jpg',
             'pub_date': '2015-02-20T06:32:34.834000',
-            'resource_uri': '/api/v1/meme/46/',
+            'resource_uri': '/api/v1/meme/5/',
             'title': 'city at night',
             'user': 'danielleglick'
         })
@@ -113,15 +113,15 @@ class VoteApiTest(ResourceTestCase):
         self.assertEqual(self.deserialize(resp)['objects'][0], {
             'id': 244,
             'date_voted': '2015-02-20T06:33:10.759000',
-            'loser': 'Mine!',
-            'loser_id': 43,
+            'loser': 'bondage fan',
+            'loser_id': 1,
             'not_scored': False,
             'resource_uri': '/api/v1/vote/244/',
             'user': None,
             'voter_id': 1,
             'voter_name': 'danielleglick',
-            'winner': 'Made it!',
-            'winner_id': 44
+            'winner': 'Mine!',
+            'winner_id': 2
         })
 
 
@@ -153,7 +153,7 @@ class ScoreApiTest(ResourceTestCase):
         resp = self.api_client.get('/api/v1/score/')
         self.assertEqual(self.deserialize(resp)['objects'][0], {
             'id': 19,
-            'meme': 'Mine!',
+            'meme': 'bondage fan',
             'resource_uri': '/api/v1/score/19/',
             'score': 10,
         })

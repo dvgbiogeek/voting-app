@@ -38,24 +38,24 @@
   <script src="/static/app.js"></script>
   <script>
   // There seems to be a bug in Chrome that results in the angular app not properly loading after /login redirect. This reloads the page to reactivate loading of the angular app.
-  function restart() {
-    var baseUrl = "http://127.0.0.1:8000";
-    if (document.referrer === baseUrl + "/login/") {
-      if ( $('#random').length ) {
-        return;
-      }
-      else {
-        console.log('content not there');
-        window.location.href = baseUrl;
-        window.setTimeout(2000);
-      }
-    }  
-    else {
-      return;
-    }
-  }
+  // function restart() {
+  //   var baseUrl = "http://127.0.0.1:8000";
+  //   if (document.referrer === baseUrl + "/login/") {
+  //     if ( $('#random').length ) {
+  //       return;
+  //     }
+  //     else {
+  //       console.log('content not there');
+  //       window.location.href = baseUrl;
+  //       window.setTimeout(2000);
+  //     }
+  //   }  
+  //   else {
+  //     return;
+  //   }
+  // }
 
-  restart();
+  // restart();
   </script>
 </body>
 </html>

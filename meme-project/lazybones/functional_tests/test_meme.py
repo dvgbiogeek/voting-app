@@ -42,26 +42,14 @@ class FunctionalTest(StaticLiveServerTestCase):
             )
         )
 
-    def retry_Webdriver_click(self, link_text):
-        attempts = 0
-        while attempts < 2:
-            try:
-                self.browser.find_element_by_link(link_text).click()
-                break
-            except StaleElementReferenceException:
-                print('StaleElementReferenceException')
-            attempts += 1
-
 
 class MemeTests(FunctionalTest):
     fixtures = ['users.json', 'memes.json']
 
     def test_login_and_out(self):
         # go to home page
-        self.browser.get('http://127.0.0.1:8000/')
+        self.browser.get(self.live_server_url)
         # go to login form
-        import time
-        time.sleep(3)
         self.browser.find_element_by_link_text('Login').click()
         self.wait_for_element_with_id('id_username')
         self.check_body_text('Login')
@@ -74,7 +62,7 @@ class MemeTests(FunctionalTest):
         self.check_body_text('Login')
 
     def test_can_enter_a_meme(self):
-        self.browser.get('http://127.0.0.1:8000/')
+        self.browser.get(self.live_server_url)
         self.assertIn('Vote Shenanigans!', self.browser.title)
         # check the body title
         body_title = self.browser.find_element_by_tag_name('h2').text
@@ -84,8 +72,6 @@ class MemeTests(FunctionalTest):
         self.login_user()
         # the user wants to enter a meme into the database
         self.browser.find_element_by_link_text('Add Content').click()
-        import time
-        time.sleep(3)
         title_inputbox = self.browser.find_element_by_id('id_new_title')
         self.assertEqual(
                 title_inputbox.get_attribute('placeholder'), 'Title')
@@ -104,7 +90,7 @@ class MemeTests(FunctionalTest):
         self.check_body_text('Success! Add another!')
 
     def test_unauthenticated_user_cannot_add_memes(self):
-        self.browser.get('http://127.0.0.1:8000/')
+        self.browser.get(self.live_server_url)
         # Navigate to add meme view
         self.browser.find_element_by_link_text('Add Content').click()
         # Input title and image_url then submit
@@ -115,23 +101,17 @@ class MemeTests(FunctionalTest):
                 'https://farm8.staticflickr.com/7525/16310590982_59ca46dafa_b.jpg')
         submit_button = self.browser.find_element_by_id('id_new_submit')
         submit_button.click()
-        import time
-        time.sleep(3)
         # Expect an error telling you to login
         self.check_body_text('Please login to add content.')
 
     def test_add_new_user(self):
-        self.browser.get('http://127.0.0.1:8000/')
-        self.wait_for_element_with_id('id_image')
+        self.browser.get(self.live_server_url)
+        # self.wait_for_element_with_id('id_image')
         self.browser.find_element_by_link_text('Add Content').click()
         # Check for new account text and link
         self.wait_for_element_with_id('id_new_title')
         self.check_body_text('I want a')
         self.browser.find_element_by_link_text('new').click()
-        # Check navigation to url to make a new account
-        # new_url = self.live_server_url + '/new_account/'
-        # current_url = self.browser.current_url
-        # self.assertEqual(new_url, current_url)
         # enter in new account information
         self.wait_for_element_with_id('id_password1')
         self.check_body_text('New Account')
@@ -147,7 +127,4 @@ class MemeTests(FunctionalTest):
         submit_button.click()
         self.wait_for_element_with_id('id_password')
         # Redirects to login page after new account is made
-        # login_url = self.live_server_url + '/login/'
-        # current_url = self.browser.current_url
-        # self.assertEqual(login_url, current_url)
         self.check_body_text('Login')
