@@ -55,6 +55,25 @@ class PattiScorer(Scorer):
         return new_winner_score, new_loser_score
 
 
+class ChessScorer(Scorer):
+    """Base Class for Scoring games chess style."""
+
+    def __init__(self):
+        # Initialize Board.
+        self.initial_score = 1600
+
+    def score_game(self, winner, loser):
+        """Take winner and loser objects and score the game.
+
+        Objects must have a 'score' property.
+        """
+        # Takes a winner and adds 1, for the loser subtracts 1
+        new_winner_score = winner.score + (16 * (1 + ((loser.score - winner.score) / 200)))
+        new_loser_score = loser.score + (16 * (-1 + ((winner.score - loser.score) / 200)))
+
+        return new_winner_score, new_loser_score
+
+
 def load_meme_score(meme_object, scorer):
     """Load a meme score by primary key
 
@@ -91,11 +110,14 @@ def record_new_scores(vote, scorer):
 
 def score_last_vote(scorer):
     """Scores the last vote entered into the database."""
-    vote = Vote.objects.last()
-    # If the vote has not yet been scored, update to not_scored attribute to
-    # False and then score the vote
-    if vote.not_scored:
-        Vote.objects.filter(pk=vote.id).update(not_scored=False)
-        record_new_scores(vote, scorer)
-    else:
-        pass
+    try:
+        vote = Vote.objects.last()
+        # If the vote has not yet been scored, update to not_scored attribute to
+        # False and then score the vote
+        if vote.not_scored:
+            Vote.objects.filter(pk=vote.id).update(not_scored=False)
+            record_new_scores(vote, scorer)
+        else:
+            pass
+    except AttributeError:
+        print("Nonetype object has no attribute 'not_scored'")

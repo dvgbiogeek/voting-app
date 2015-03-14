@@ -23,5 +23,5 @@ def rescore_all_games(scorer):
         scorers.record_new_scores(vote, scorer)
 
 
-scorer = scorers.VoteScorer()
+scorer = scorers.ChessScorer()
 # rescore_all_games(scorer)
